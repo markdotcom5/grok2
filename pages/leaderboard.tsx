@@ -1,4 +1,8 @@
-export default function Leaderboard() {
+import React from 'react';
+
+export default function Dashboard() {
+  return <h1>Dashboard Placeholder</h1>;
+}
     const performers = [
       { name: "Alice", score: 95 },
       { name: "Bob", score: 89 },

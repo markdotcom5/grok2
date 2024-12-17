@@ -1,20 +1,22 @@
-export default function Home() {
-    return (
-      <div className="min-h-screen bg-gray-900 text-white">
-        {/* Existing Content */}
-        <section className="flex flex-col items-center justify-center py-16">
-          <h1 className="text-5xl font-bold mb-4">Your Existing Content</h1>
-          <p className="text-gray-400">Keep all your current code here.</p>
-        </section>
-  
-        {/* New Hero Banner Placeholder */}
-        <section className="flex flex-col items-center justify-center py-16">
-          <h1 className="text-4xl font-bold mb-4">Welcome to StelTrek!</h1>
-          <div className="w-full h-64 bg-gray-700 flex items-center justify-center">
-            <p>Hero Banner Placeholder</p>
+import React from 'react';
+
+export default function Dashboard() {
+  return <h1>Dashboard Placeholder</h1>;
+}
+      <div className="min-h-screen p-8 bg-gray-100">
+        <h2 className="text-3xl font-bold mb-6 text-center">About Us</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Team Member Placeholder */}
+          <div className="w-full h-48 bg-gray-300 flex items-center justify-center rounded-lg">
+            <p>Team Member Placeholder</p>
           </div>
-          <p className="mt-4">Explore the future of space travel and training.</p>
-        </section>
+          <div className="w-full h-48 bg-gray-300 flex items-center justify-center rounded-lg">
+            <p>Board of Advisors Placeholder</p>
+          </div>
+          <div className="w-full h-48 bg-gray-300 flex items-center justify-center rounded-lg">
+            <p>Mission Statement Placeholder</p>
+          </div>
+        </div>
       </div>
     );
   }

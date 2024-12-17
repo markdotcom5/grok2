@@ -1,8 +1,8 @@
-import "../styles/globals.css";
-import Navbar from "../components/Navbar";
+import React from 'react';
 
-function MyApp({ Component, pageProps }) {
-  return (
+export default function Dashboard() {
+  return <h1>Dashboard Placeholder</h1>;
+}
     <>
       <Navbar />
       <Component {...pageProps} />

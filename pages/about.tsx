@@ -1,3 +1,8 @@
+import React from 'react';
+
+export default function Dashboard() {
+  return <h1>Dashboard Placeholder</h1>;
+}
 const team = [
   {
     name: "Mark Sendo",

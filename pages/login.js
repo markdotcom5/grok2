@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../lib/firebase"; // Import the Firebase config
+import React from 'react';
 
-export default function Login() {
+export default function Dashboard() {
+  return <h1>Dashboard Placeholder</h1>;
+}
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

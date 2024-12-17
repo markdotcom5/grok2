@@ -1,7 +1,9 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import React from 'react';
 
-class MyDocument extends Document {
-  render() {
+export default function Dashboard() {
+  return <h1>Dashboard Placeholder</h1>;
+}
+{
     return (
       <Html>
         <Head>

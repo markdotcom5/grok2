@@ -1,7 +1,8 @@
-import { NextPageContext } from "next";
+import React from 'react';
 
-function Error({ statusCode }: { statusCode: number }) {
-  return (
+export default function Dashboard() {
+  return <h1>Dashboard Placeholder</h1>;
+}
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h1 className="text-4xl font-bold text-red-600">
         Error {statusCode}
