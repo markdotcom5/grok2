@@ -1,13 +1,12 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
+import '../styles/globals.css';
 
-export default function Dashboard() {
-  return <h1>Dashboard Placeholder</h1>;
-}
+export default function MyApp({ Component, pageProps }) {
+  return (
     <>
       <Navbar />
       <Component {...pageProps} />
     </>
   );
 }
-
-export default MyApp;

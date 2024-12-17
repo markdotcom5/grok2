@@ -1,29 +1,23 @@
 import React from 'react';
 
-export default function Dashboard() {
-  return <h1>Dashboard Placeholder</h1>;
-}
-    const performers = [
-      { name: "Alice", score: 95 },
-      { name: "Bob", score: 89 },
-      { name: "Charlie", score: 82 },
-    ];
-  
-    return (
-      <div className="min-h-screen bg-gray-100 p-6">
-        <h1 className="text-4xl font-bold text-center mb-6">🏆 Leaderboard</h1>
-        <ul className="max-w-lg mx-auto bg-white shadow-md rounded p-6">
-          {performers.map((player, index) => (
-            <li
-              key={index}
-              className="flex justify-between py-2 border-b last:border-b-0"
-            >
-              <span className="text-lg font-medium">{player.name}</span>
-              <span className="text-lg font-bold">{player.score}</span>
-            </li>
-          ))}
-        </ul>
+export default function Leaderboard() {
+  const users = [
+    { name: 'Alice', score: 1200 },
+    { name: 'Bob', score: 1100 },
+    { name: 'Charlie', score: 1000 },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white p-8">
+      <h1 className="text-4xl font-bold text-center mb-8">Leaderboard</h1>
+      <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
+        {users.map((user, index) => (
+          <div key={index} className="flex justify-between py-2 border-b border-gray-700">
+            <span>{user.name}</span>
+            <span className="font-bold">{user.score}</span>
+          </div>
+        ))}
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

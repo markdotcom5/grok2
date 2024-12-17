@@ -1,9 +1,8 @@
 import React from 'react';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-export default function Dashboard() {
-  return <h1>Dashboard Placeholder</h1>;
-}
-{
+export default class MyDocument extends Document {
+  render() {
     return (
       <Html>
         <Head>
@@ -17,5 +16,3 @@ export default function Dashboard() {
     );
   }
 }
-
-export default MyDocument;
