@@ -1,20 +1,17 @@
 import React from 'react';
 
-export default function Dashboard() {
-  return <h1>Dashboard Placeholder</h1>;
-}
 const team = [
   {
     name: "Mark Sendo",
     role: "Co-Founder and Visionary Leader",
     image: "/images/mark.jpg",
-    bio: "As the Co-Founder and Visionary Leader of StelTrek, Mark brings over 20 years of entrepreneurial expertise to the company’s mission of democratizing space travel. Renowned for turning innovative concepts into billion-dollar enterprises, Mark’s career highlights include launching the world’s first online mortgage company, acquired by Microsoft, and co-creating BillMeLater, later sold to eBay for $565 million. His pioneering vision and ability to disrupt traditional industries are integral to StelTrek’s efforts to redefine how individuals prepare for the final frontier. Mark holds an Executive MBA from the University of Michigan’s Ross School of Business and a Master’s in Applied Economics from Rackham Graduate School.",
+    bio: "As the Co-Founder and Visionary Leader of StelTrek, Mark brings over 20 years of entrepreneurial expertise to the company’s mission of democratizing space travel...",
   },
   {
     name: "John Errington",
     role: "Co-Founder and CEO",
     image: "/images/john.jpg",
-    bio: "As the CEO of StelTrek, John leads the effort to transform experiential education and training for space travel enthusiasts. With extensive experience managing creative agencies and delivering innovative digital solutions, John specializes in developing high-quality, user-focused experiences. John holds a Bachelor's and Master's degree from Harvard and an Executive MBA from the Quantic School of Business and Technology.",
+    bio: "As the CEO of StelTrek, John leads the effort to transform experiential education and training for space travel enthusiasts...",
   },
 ];
 
@@ -30,13 +27,11 @@ const advisors = [
 export default function About() {
   return (
     <div className="p-8 bg-gray-100 min-h-screen">
-      {/* About Section */}
       <h1 className="text-4xl font-bold text-center mb-6">About Us</h1>
       <p className="text-gray-600 text-center mb-10">
         We are on a mission to democratize space travel and prepare humanity for the next frontier.
       </p>
 
-      {/* Team Section */}
       <section className="mb-16">
         <h2 className="text-3xl font-semibold text-center mb-6">Our Team</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -55,7 +50,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Board of Advisors Section */}
       <section>
         <h2 className="text-3xl font-semibold text-center mb-6">Board of Advisors</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

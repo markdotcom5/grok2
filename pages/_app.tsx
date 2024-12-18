@@ -1,12 +1,12 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import '../styles/globals.css';
+import type { AppProps } from 'next/app';
 
-export default function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <Navbar />
-      <Component {...pageProps} />
-    </>
-  );
+// The App component is the root of your Next.js application.
+// Disabling prop-types rule since it's not needed in TypeScript.
+/* eslint-disable react/prop-types */
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
 }
+
+export default MyApp;
