@@ -1,15 +1,16 @@
-import { NextApiRequest, NextApiResponse } from "next";
+// pages/api/test-mongodb.ts
+import clientPromise from '../../lib/mongodb';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async (req, res) => {
   try {
-    // Your MongoDB logic here
-    res.status(200).json({ message: "MongoDB connection successful" });
-  } catch (error) {
-    console.error("MongoDB connection error:", error);
+    const client = await clientPromise;
+    const db = client.db('myFirstDatabase'); // Change to your database name
 
-    const errorMessage =
-      error instanceof Error ? error.message : "An unknown error occurred";
+    const data = await db.collection('myCollection').find({}).toArray(); // Change to your collection name
 
-    res.status(500).json({ error: errorMessage });
+    res.status(200).json(data);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: 'Failed to fetch data' });
   }
-}
+};
