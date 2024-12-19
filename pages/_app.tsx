@@ -1,12 +1,14 @@
+// pages/_app.tsx
 import React from 'react';
-import type { AppProps } from 'next/app';
+import Layout from '../components/Layout';
+import '../styles/globals.css';
 
-// The App component is the root of your Next.js application.
-// Disabling prop-types rule since it's not needed in TypeScript.
-/* eslint-disable react/prop-types */
-
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }) {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 
 export default MyApp;
