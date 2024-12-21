@@ -1,16 +1,34 @@
-// pages/api/test-mongodb.ts
-import clientPromise from '../../lib/mongodb';
+import clientPromise from "../../lib/mongodb";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default async (req, res) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const client = await clientPromise;
-    const db = client.db('myFirstDatabase'); // Change to your database name
+    const db = client.db("grok2");
 
-    const data = await db.collection('myCollection').find({}).toArray(); // Change to your collection name
+    if (req.method === "POST") {
+      const result = await db.collection("users").insertOne({
+        email: req.body.email,
+        createdAt: new Date(),
+        lastLogin: new Date(),
+        spaceCredits: 0,
+        trainingProgress: {
+          physical: 0,
+          mental: 0,
+          spiritual: 0,
+        },
+      });
+      return res.status(201).json({ success: true, data: result });
+    }
 
-    res.status(200).json(data);
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ error: 'Failed to fetch data' });
+    if (req.method === "GET") {
+      const results = await db.collection("users").find({}).toArray();
+      return res.status(200).json({ success: true, data: results });
+    }
+
+    return res.status(405).json({ error: "Method Not Allowed" });
+  } catch (error) {
+    console.error("Database error:", error);
+    return res.status(500).json({ success: false, error: "Internal Server Error" });
   }
-};
+}

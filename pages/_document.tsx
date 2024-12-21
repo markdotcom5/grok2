@@ -1,12 +1,12 @@
-import React from 'react';
+// pages/_document.tsx
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-export default class MyDocument extends Document {
+class MyDocument extends Document {
   render() {
     return (
       <Html>
         <Head>
-          <meta name="description" content="StelTrek Academy" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" />
         </Head>
         <body>
           <Main />
@@ -16,3 +16,5 @@ export default class MyDocument extends Document {
     );
   }
 }
+
+export default MyDocument;

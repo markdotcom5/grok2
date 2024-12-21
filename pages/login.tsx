@@ -1,40 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { login, signup, logout } from "../lib/authHelpers";
 
-export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const LoginPage: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Logging in with ${email} and password`);
+  const handleLogin = async () => {
+    try {
+      const user = await login(email, password);
+      alert(`Welcome back, ${user.email}!`);
+    } catch (error: any) {
+      alert(`Login failed: ${error.message}`);
+    }
+  };
+
+  const handleSignup = async () => {
+    try {
+      const user = await signup(email, password);
+      alert(`Account created for ${user.email}!`);
+    } catch (error: any) {
+      alert(`Sign-up failed: ${error.message}`);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      alert("You have been logged out.");
+    } catch (error: any) {
+      alert(`Logout failed: ${error.message}`);
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold mb-6">Login</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 rounded bg-gray-700 text-white"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 rounded bg-gray-700 text-white"
-            required
-          />
-          <button type="submit" className="w-full bg-blue-600 p-2 rounded hover:bg-blue-700">
-            Log In
-          </button>
-        </form>
+      <div className="w-full max-w-md p-4 bg-white rounded shadow-md">
+        <h1 className="text-4xl font-bold mb-6 text-center">Login</h1>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full p-2 mb-4 border rounded"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full p-2 mb-4 border rounded"
+        />
+        <button
+          onClick={handleLogin}
+          className="w-full bg-blue-500 text-white p-2 rounded mb-2"
+        >
+          Log In
+        </button>
+        <button
+          onClick={handleSignup}
+          className="w-full bg-green-500 text-white p-2 rounded mb-2"
+        >
+          Sign Up
+        </button>
+        <button
+          onClick={handleLogout}
+          className="w-full bg-red-500 text-white p-2 rounded"
+        >
+          Log Out
+        </button>
       </div>
     </div>
   );
-}
+};
+
+export default LoginPage;

@@ -1,20 +1,18 @@
-import React from 'react';
-import { NextPageContext } from 'next';
+import React from "react";
 
-function CustomError({ statusCode }: { statusCode: number }) {
+const CustomError = ({ statusCode }: { statusCode: number }) => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-      <h1 className="text-4xl font-bold">An Error Occurred!</h1>
-      <p className="text-lg text-gray-400 mt-4">
+      <h1 className="text-4xl font-bold">
         {statusCode
-          ? `A server-side error occurred: ${statusCode}`
-          : 'A client-side error occurred'}
-      </p>
+          ? `An error ${statusCode} occurred on server`
+          : "An error occurred on client"}
+      </h1>
     </div>
   );
-}
+};
 
-CustomError.getInitialProps = ({ res, err }: NextPageContext) => {
+CustomError.getInitialProps = ({ res, err }: any) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
   return { statusCode };
 };

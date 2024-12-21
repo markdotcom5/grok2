@@ -1,17 +1,15 @@
-// components/Layout.tsx
-import React from 'react';
-import Image from 'next/image';
+import React, { ReactNode } from 'react';
+import Navbar from './Navbar';
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <div>
-      <header>
-        <Image src="/logo.png" alt="STELTREK Logo" width={50} height={50} />
-      </header>
+      <Navbar />
       <main>{children}</main>
-      <footer>
-        <p>© Your Company Name</p>
-      </footer>
     </div>
   );
 };
