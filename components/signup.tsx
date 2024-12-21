@@ -1,29 +1,60 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState } from 'react';
 
-export default function SignUpForm() {
-  const [formData, setFormData] = useState({ email: "", password: "", username: "" });
+const Signup = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [additionalInfo, setAdditionalInfo] = useState({ name: '' });
+  const [error, setError] = useState(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("/api/signup", formData);
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
+    setError(null);
+
+    const response = await fetch('/api/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ action: 'signup', email, password, additionalInfo }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log('Signup successful', data.user);
+    } else {
+      setError(data.error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="username" placeholder="Username" onChange={handleChange} />
-      <input type="email" name="email" placeholder="Email" onChange={handleChange} />
-      <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-      <button type="submit">Sign Up</button>
+    <form onSubmit={handleSignup}>
+      <input
+        type='email'
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder='Email'
+        required
+      />
+      <input
+        type='password'
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder='Password'
+        required
+      />
+      {/* Additional input fields for more user information */}
+      <input
+        type='text'
+        value={additionalInfo.name}
+        onChange={(e) => setAdditionalInfo({ ...additionalInfo, name: e.target.value })}
+        placeholder='Name'
+        required
+      />
+      <button type='submit'>Signup</button>
+      {error && <p>{error}</p>}
     </form>
   );
-}
+};
+
+export default Signup;
